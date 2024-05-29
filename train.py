@@ -10,9 +10,9 @@ import torch.multiprocessing as mp
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.cuda.amp import autocast, GradScaler
-from modules.data_loader import StaticDataset
+from modules.data_loader import StaticDataset, DynamicDataset
 from modules.utils import CONFIG_PATH
-from modules.models import BPNet
+from modules.models import BPNet, RNN_50_100
 logging.getLogger('matplotlib').setLevel(logging.WARNING)
 logging.getLogger('numba').setLevel(logging.WARNING)
 torch.backends.cudnn.benchmark = True
@@ -42,17 +42,17 @@ def run(rank, n_gpus, hps):
     dist.init_process_group(backend= 'gloo' if os.name == 'nt' else 'nccl', init_method='env://', world_size=n_gpus, rank=rank)
     torch.manual_seed(hps.train.seed)
     torch.cuda.set_device(rank)
-    train_dataset = StaticDataset(hps,"train")
+    train_dataset = StaticDataset(hps,"train") if hps.data.type == "static" else DynamicDataset(hps,"train")
     num_workers = 5 if mp.cpu_count() > 4 else mp.cpu_count()
     train_loader = DataLoader(train_dataset, num_workers=num_workers, shuffle=True, pin_memory=True,
                               batch_size=hps.train.batch_size)
     if rank == 0:
-        eval_dataset = StaticDataset(hps,"eval")
+        eval_dataset = StaticDataset(hps,"eval")  if hps.data.type == "static" else DynamicDataset(hps,"eval")
         eval_loader = DataLoader(eval_dataset, num_workers=1, shuffle=False,
                                  batch_size=hps.train.eval_batch_size, pin_memory=True,
                                  )
 
-    net = BPNet(train_dataset.input_dim,hps.model.static.H,hps.model.static.H2,train_dataset.output_dim).cuda(rank)
+    net = BPNet(train_dataset.input_dim,hps.model.static.H,hps.model.static.H2,train_dataset.output_dim).cuda(rank) if hps.data.type == "static" else RNN_50_100(train_dataset.input_dim,train_dataset.output_dim).cuda(rank)
     optim = torch.optim.Adam(
         net.parameters(),
         hps.train.learning_rate,
@@ -144,7 +144,6 @@ def evaluate(net, eval_loader, writer_eval,hps,rank):
         global_step=global_step,
     )
     net.train()
-
 
 if __name__ == "__main__":
     main()

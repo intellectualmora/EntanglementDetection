@@ -50,12 +50,12 @@ class StaticDataset(torch.utils.data.Dataset):
         elif self.mode == "mat":
             try:
                 sample = h5py.File(self.dataset_path, 'r')
-                self.input = torch.tensor(np.array(sample['expect_value_psis']).T)[:self.size]
-                self.output = torch.tensor(np.array(sample['entropys']).T)[:self.size]
+                self.input = torch.tensor(np.array(sample['expect_value_psis']).T,dtype=torch.float32)[:self.size]
+                self.output = torch.tensor(np.array(sample['entropys']).T,dtype=torch.float32)[:self.size]
             except:
                 sample = loadmat(self.dataset_path)
-                self.input = torch.tensor(np.array(sample['expect_value_psis']))[:self.size]
-                self.output = torch.tensor(np.array(sample['entropys']))[:self.size]
+                self.input = torch.tensor(np.array(sample['expect_value_psis']),dtype=torch.float32)[:self.size]
+                self.output = torch.tensor(np.array(sample['entropys']),dtype=torch.float32)[:self.size]
             self.input_dim = self.input.shape[1]
             self.output_dim = self.output.shape[1]
 
@@ -65,6 +65,37 @@ class StaticDataset(torch.utils.data.Dataset):
     def __len__(self):
         return int(self.size)
 
+class DynamicDataset(torch.utils.data.Dataset):
+    def __init__(self, hps, data_type):
+        if data_type == "train":
+            self.dataset_path = hps.data.train_dataset_path
+            self.size = int(hps.data.train_size)
+        elif data_type == "eval":
+            self.dataset_path = hps.data.eval_dataset_path
+            self.size = int(hps.data.eval_size)
+        elif data_type == "test":
+            self.dataset_path = hps.data.test_dataset_path
+            self.size = int(hps.data.test_size)
+        self.mode = hps.data.mode
+        self.n_qubit = int(hps.data.n_qubit)
+        if self.mode == "mat":
+            sample = h5py.File(self.dataset_path, 'r')
+            self.input = np.array(sample['inputdata'])
+            self.output = np.array(sample['outdata'])
+            self.input = np.einsum('XYZB->BXYZ', self.input)
+            self.input = torch.tensor(np.reshape(self.input, [-1, 50, hps.data.n_qubit*3]),dtype=torch.float32)[:self.size]
+            self.output = torch.tensor(np.einsum('XYB->BXY', self.output),dtype=torch.float32)[:self.size]
+
+            self.input_dim = self.input.shape[2]
+            self.output_dim = self.output.shape[2]
+        else:
+            raise NotImplementedError
+
+    def __getitem__(self, idx):
+        return self.input[idx], self.output[idx]
+
+    def __len__(self):
+        return int(self.size)
 
 if __name__ == "__main__":
     hps = get_hparams("../" + CONFIG_PATH["config_path"])

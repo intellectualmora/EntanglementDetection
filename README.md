@@ -17,12 +17,18 @@ We provide the [pretrained models]().
 0. Python >= 3.8
 0. Clone this repository
 0. Install python requirements. Please refer [requirements.txt](requirements.txt)
-0. Download the datasets or use simulation code to generate datasets.
-0. Build if you use your own datasets.
-```sh
-python 
-```
+0. Download datasets or use simulation code to generate datasets.
+0. Configure training or inference parameters in `configs/config.json`
+0. Train or download pretrained models.
+0. Infer the test data.
 
+## Installation
+`conda` virtual environment is recommended. 
+```
+conda create -n EntanglementDetection python=3.8
+conda activate EntanglementDetection
+pip install -r requirements.txt
+```
 
 ## Training Exmaple
 ```sh
@@ -33,3 +39,14 @@ python train.py
 
 ## Inference Example
 See [inference.ipynb](inference.ipynb)
+
+
+## Acknowledgement
+
+
+## Citation
+
+If our code or models help your work, please cite our paper:
+```BibTeX
+
+```

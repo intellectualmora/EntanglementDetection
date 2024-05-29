@@ -41,10 +41,8 @@ class RNN_50_100(nn.Module):
     def __init__(self, in_dim, n_y):
         super(RNN_50_100, self).__init__()
         self.hidden_dim = in_dim
+        self.lstm = nn.LSTM(in_dim, 256, 1, batch_first=True,bidirectional=False)
         self.Relu = nn.ReLU()
-        self.linear1 = nn.Linear(in_dim, 128)
-        self.linear2 = nn.Linear(128, 128)
-        self.linear3 = nn.Linear(128, 256)
         self.cell = nn.LSTMCell(input_size=256, hidden_size=256)
         self.linear = nn.Linear(256,n_y)
         self.n_y = n_y
@@ -53,20 +51,17 @@ class RNN_50_100(nn.Module):
         self.optimizer = torch.optim.Adam(self.parameters(),lr=0.005,weight_decay=0.000001)
 
     def forward(self, x):
-        x = self.linear1(x)
-        x = self.Relu(x)
-        x = self.linear2(x)
-        x = self.Relu(x)
-        x = self.linear3(x)
-        x = self.Relu(x)
-        out = None
-        h_t = x
-        c_t = x
+        out, (ht, ct) = self.lstm(x)
+        ht = ht[0]
+        x = None
+        h_t = ht
+        c_t = ct[0]
         for i in range(100):
-            h_t, c_t = self.cell(h_t, (h_t, c_t))
+            h_t, c_t = self.cell(ht, (h_t, c_t))
             bt = torch.reshape(self.linear(h_t),(-1,1,self.n_y))
-            if out is None:
-                out = bt
+            if x is None:
+                x = bt
             else:
-                out = torch.cat((out, bt), dim=1)
-        return out
+                x = torch.cat((x, bt), dim=1)
+
+        return x

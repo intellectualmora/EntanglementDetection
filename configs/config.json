@@ -1,14 +1,15 @@
 {
   "data": {
-    "train_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\json\\100bit\\train",
-    "eval_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\json\\100bit\\eval",
-    "test_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\json\\100bit\\test",
-    "mode": "json",
-    "n_qubit": 100,
+    "train_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\mat\\dynamic\\4bit\\train\\Traindata_4qubit_Ham_dynamics.mat",
+    "eval_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\mat\\dynamic\\4bit\\eval\\Traindata_4qubit_Ham_dynamics.mat",
+    "test_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\mat\\dynamic\\4bit\\test\\Traindata_4qubit_Ham_dynamics.mat",
+    "mode": "mat",
+    "n_qubit": 4,
     "batch_size": 1000,
     "train_size": 1e5,
     "eval_size": 1e4,
-    "test_size": 1e4
+    "test_size": 1e4,
+    "type": "dynamic"
   },
   "model": {
     "static": {
@@ -20,7 +21,7 @@
     }
   },
   "train": {
-    "port": "2346",
+    "port": "8080",
     "batch_size": 2048,
     "eval_batch_size": 10000,
     "fp16_run": false,
@@ -41,6 +42,6 @@
   },
   "infer": {
     "batch_size": 1000,
-    "model_dir": "D:\\document\\PyCharm Document\\EntanglementDetection\\weights\\100qubit\\static HamXYZ model\\100bit_500000.pth"
+    "model_dir": "D:\\document\\PyCharm Document\\EntanglementDetection\\weights\\4qubit\\dynamical Hamiltonian HZZX\\Traindata_4qubit_Ham_dynamics.mat.pth"
   }
 }
