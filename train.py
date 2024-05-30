@@ -20,10 +20,10 @@ global_step = 0
 start_time = time.time()
 
 
-def main():
+def main(config_path=CONFIG_PATH["config_path"]):
     """Assume Single Node Multi GPUs Training Only"""
     assert torch.cuda.is_available(), "CPU training is not allowed."
-    hps = utils.get_hparams(CONFIG_PATH["config_path"])
+    hps = utils.get_hparams(config_path)
     utils.add_model_dir(hps)
     n_gpus = torch.cuda.device_count()
     os.environ['MASTER_ADDR'] = '127.0.0.1'
