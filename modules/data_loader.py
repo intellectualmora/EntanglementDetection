@@ -50,12 +50,12 @@ class StaticDataset(torch.utils.data.Dataset):
         elif self.mode == "mat":
             try:
                 sample = h5py.File(self.dataset_path, 'r')
-                self.input = torch.tensor(np.array(sample['expect_value_psis']).T,dtype=torch.float32)[:self.size]
-                self.output = torch.tensor(np.array(sample['entropys']).T,dtype=torch.float32)[:self.size]
+                self.input = torch.tensor(np.array(sample['inputdata']).T,dtype=torch.float32)[:self.size]
+                self.output = torch.tensor(np.array(sample['outdata']).T,dtype=torch.float32)[:self.size]
             except:
                 sample = loadmat(self.dataset_path)
-                self.input = torch.tensor(np.array(sample['expect_value_psis']),dtype=torch.float32)[:self.size]
-                self.output = torch.tensor(np.array(sample['entropys']),dtype=torch.float32)[:self.size]
+                self.input = torch.tensor(np.array(sample['inputdata']),dtype=torch.float32)[:self.size]
+                self.output = torch.tensor(np.array(sample['outdata']),dtype=torch.float32)[:self.size]
             self.input_dim = self.input.shape[1]
             self.output_dim = self.output.shape[1]
 
