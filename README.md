@@ -5,7 +5,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com) 
 [![License: GPLv3](https://img.shields.io/badge/license-MIT-blue)](./LICENSE.txt)
 [![arXiv](https://img.shields.io/badge/arXiv-2209.08501-b31b1b.svg)](https://arxiv.org/abs/2209.08501)
-[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/models)
+[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/chemora/EntanglementDetectionModel/tree/main)
 [![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-sm.svg)](https://huggingface.co/datasets/chemora/EntanglementDetectionDataSet/tree/main)
 ### Yulei Huang, Liangyu Che, Chao Wei, Feng Xu, Xinfang Nie, Jun Li, Dawei Lu and Tao Xin
 
