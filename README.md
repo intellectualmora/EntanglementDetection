@@ -6,12 +6,12 @@
 [![License: GPLv3](https://img.shields.io/badge/license-MIT-blue)](./LICENSE.txt)
 [![arXiv](https://img.shields.io/badge/arXiv-2209.08501-b31b1b.svg)](https://arxiv.org/abs/2209.08501)
 [![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/models)
-[![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-sm.svg)](https://huggingface.co/datasets)
+[![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-sm.svg)](https://huggingface.co/datasets/chemora/EntanglementDetectionDataSet/tree/main)
 ### Yulei Huang, Liangyu Che, Chao Wei, Feng Xu, Xinfang Nie, Jun Li, Dawei Lu and Tao Xin
 
 In our recent [paper](https://arxiv.org/abs/2209.08501), we propose Direct entanglement detection of quantum systems using machine learning.
 
-We provide the [pretrained models]().
+We provide the [pretrained models]() and [datasets](https://huggingface.co/datasets/chemora/EntanglementDetectionDataSet/tree/main).
 
 ## Pre-requisites
 0. Python >= 3.8
