@@ -38,7 +38,6 @@ python train.py
 
 
 ## Inference Example
-See [inference.ipynb](inference.ipynb)
 
 
 ## Acknowledgement
