@@ -58,6 +58,38 @@ class StaticDataset(torch.utils.data.Dataset):
                 self.output = torch.tensor(np.array(sample['outdata']),dtype=torch.float32)[:self.size]
             self.input_dim = self.input.shape[1]
             self.output_dim = self.output.shape[1]
+        elif self.mode == "pth":
+            datalist = os.listdir(self.dataset_path)
+            xs_s = None
+            xs_t = None
+            self.output = None
+            datalist.sort()
+            for name in datalist:
+                if "batch_entropy" in name:
+                    if self.output is None:
+                        self.output = torch.load(self.dataset_path + name)
+                    else:
+                        if self.output.shape[0] == self.size:
+                            continue
+                        self.output = torch.cat((self.output, torch.load(self.dataset_path + name)), 0)
+
+                if "batch_ob_single_couple" in name:
+                    if xs_s is None:
+                        xs_s = torch.load(self.dataset_path + name).reshape(100, -1)
+                    else:
+                        if xs_s.shape[0] == self.size:
+                            continue
+                        xs_s = torch.cat((xs_s, torch.load(self.dataset_path + name).reshape(100, -1)), 0)
+                if "batch_ob_two_couple" in name:
+                    if xs_t is None:
+                        xs_t = torch.load(self.dataset_path + name).reshape(100, -1)
+                    else:
+                        if xs_t.shape[0] == self.size:
+                            continue
+                        xs_t = torch.cat((xs_t, torch.load(self.dataset_path + name).reshape(100, -1)), 0)
+
+            self.input = torch.cat((xs_s, xs_t), 1).type(torch.float32)
+            self.output = self.output.type(torch.float32)
 
     def __getitem__(self, idx):
         return self.input[idx], self.output[idx]

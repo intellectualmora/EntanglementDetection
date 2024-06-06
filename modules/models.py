@@ -65,3 +65,39 @@ class RNN_50_100(nn.Module):
                 x = torch.cat((x, bt), dim=1)
 
         return x
+
+class BPNet_20bit(nn.Module):
+
+    def __init__(self, D_in, H,H2, D_out):
+        super(BPNet, self).__init__()
+        self.linear1 = nn.Linear(D_in, H)
+        self.Relu = nn.PReLU()
+        self.Tanh = nn.Tanh()
+        self.linear2 = nn.Linear(H, H2)
+        self.linear3 = nn.Linear(H2,H2)
+        self.linear31 = nn.Linear(H2, H2)
+        self.linear32 = nn.Linear(H2, H2)
+        self.linear33 = nn.Linear(H2, H2)
+        self.linear4 = nn.Linear(H2,H)
+        self.linear5 = nn.Linear(H,D_out)
+        self.loss_fn = nn.MSELoss()
+        self.cosloss = nn.CosineEmbeddingLoss()
+        self.optimizer = torch.optim.Adam(params=self.parameters(),lr=0.0001, weight_decay=1e-5)
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.Relu(x)
+        x = self.linear2(x)
+        x = self.Relu(x)
+        x = self.linear3(x)
+        x = self.Relu(x)
+        x = self.linear31(x)
+        x = self.Relu(x)
+        x = self.linear32(x)
+        x = self.Relu(x)
+        x = self.linear33(x)
+        x = self.Relu(x)
+        x = self.linear4(x)
+        x = self.Relu(x)
+        x = self.linear5(x)
+        return x
