@@ -10,7 +10,7 @@
 
 In our recent [paper](https://arxiv.org/abs/2209.08501), we propose Direct entanglement detection of quantum systems using machine learning.
 
-We provide the [pretrained models]() and [datasets](https://huggingface.co/datasets/chemora/EntanglementDetectionDataSet/tree/main).
+We provide the [pretrained models](https://huggingface.co/chemora/EntanglementDetectionModel/tree/main) and [datasets](https://huggingface.co/datasets/chemora/EntanglementDetectionDataSet/tree/main).
 
 ## Pre-requisites
 0. Python >= 3.8
