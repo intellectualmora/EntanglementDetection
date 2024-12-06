@@ -21,7 +21,7 @@
     }
   },
   "train": {
-    "port": "8080",
+    "port": "888",
     "batch_size": 2048,
     "eval_batch_size": 10000,
     "fp16_run": false,
