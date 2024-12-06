@@ -1,8 +1,8 @@
 {
   "data": {
-    "train_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\mat\\dynamic\\4bit\\train\\Traindata_4qubit_Ham_dynamics.mat",
-    "eval_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\mat\\dynamic\\4bit\\eval\\Traindata_4qubit_Ham_dynamics.mat",
-    "test_dataset_path": "D:\\document\\PyCharm Document\\EntanglementDetection\\datasets\\mat\\dynamic\\4bit\\test\\Traindata_4qubit_Ham_dynamics.mat",
+    "train_dataset_path": "/content/EntanglementDetection/datasets/mat/dynamic/4qubit/HZZX/train/4bit.mat",
+    "eval_dataset_path": "/content/EntanglementDetection/datasets/mat/dynamic/4qubit/HZZX/eval/4bit.mat",
+    "test_dataset_path": "/content/EntanglementDetection/datasets/mat/dynamic/4qubit/HZZX/test/4bit.mat",
     "mode": "mat",
     "n_qubit": 4,
     "batch_size": 1000,
