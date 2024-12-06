@@ -9,8 +9,8 @@ import torch
 from numba import njit,prange
 from scipy.linalg import sqrtm
 MATPLOTLIB_FLAG = False
-CONFIG_PATH = {"model_dir": "./logs/",
-               "config_path": "./configs/config.json"}
+CONFIG_PATH = {"model_dir": "./EntanglementDetection/logs/",
+               "config_path": "./EntanglementDetection/configs/config.json"}
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging
 
