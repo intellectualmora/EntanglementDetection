@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ```
 
 ## Training Exmaple
-In Google Colab, there is a training example for a 4-qubit dynamic model. If you need to train other models, please modify the configuration in the `configs\config.json` file accordingly.
+In [Google Colab](https://colab.research.google.com/drive/1IrDiywgmG5lln-Jb_9CM-3djAmm_2KwM?usp=sharing), there is a training example for a 4-qubit dynamic model. If you need to train other models, please modify the configuration in the `configs\config.json` file accordingly.
 ```sh
 python train.py
 
@@ -40,7 +40,7 @@ python train.py
 
 ## Inference Example
 
-In Google Colab, there is a testing example for a 4-qubit dynamic model, and the `examples` folder contains testing examples for other pre-trained models.
+In [Google Colab](https://colab.research.google.com/drive/1IrDiywgmG5lln-Jb_9CM-3djAmm_2KwM?usp=sharing), there is a testing example for a 4-qubit dynamic model, and the `examples` folder contains testing examples for other pre-trained models.
 
 ## Acknowledgement
 
