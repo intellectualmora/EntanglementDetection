@@ -42,6 +42,6 @@
   },
   "infer": {
     "batch_size": 1000,
-    "model_dir": "/content/EntanglementDetection/weights/4qubit/dynamical Hamiltonian HZZX/Traindata_4qubit_Ham_dynamics.mat.pth"
+    "model_dir": "/content/EntanglementDetectionModel/4qubit/dynamical Hamiltonian HZZX/Traindata_4qubit_Ham_dynamics.mat.pth"
   }
 }
