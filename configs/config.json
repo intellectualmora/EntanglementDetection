@@ -1,15 +1,15 @@
 {
   "data": {
-    "train_dataset_path": "/content/EntanglementDetection/datasets/mat/dynamic/4qubit/HZZX/train/4bit.mat",
-    "eval_dataset_path": "/content/EntanglementDetection/datasets/mat/dynamic/4qubit/HZZX/eval/4bit.mat",
-    "test_dataset_path": "/content/EntanglementDetection/datasets/mat/dynamic/4qubit/HZZX/test/4bit.mat",
+    "train_dataset_path": "/content/EntanglementDetection/datasets/mat/static/4qubit/full connect/train/4bit.mat",
+    "eval_dataset_path": "/content/EntanglementDetection/datasets/mat/static/4qubit/full connect/train/4bit.mat",
+    "test_dataset_path": "/content/EntanglementDetection/datasets/mat/static/4qubit/full connect/test/Ttesdata_4qubit_1000productHam_results.mat",
     "mode": "mat",
     "n_qubit": 4,
     "batch_size": 1000,
     "train_size": 1e5,
     "eval_size": 1e4,
     "test_size": 1e4,
-    "type": "dynamic"
+    "type": "static"
   },
   "model": {
     "static": {
