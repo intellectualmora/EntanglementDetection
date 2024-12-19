@@ -42,6 +42,6 @@
   },
   "infer": {
     "batch_size": 1000,
-    "model_dir": "/content/EntanglementDetectionModel/weights/4qubit/dynamical Hamiltonian HZZX/4bit.pth"
+    "model_dir": "/content/EntanglementDetectionModel/weights/4qubit/static fully connected Hamiltonians/4bit.pth"
   }
 }
