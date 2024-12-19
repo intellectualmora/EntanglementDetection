@@ -42,9 +42,6 @@ python train.py
 
 In [Google Colab](https://colab.research.google.com/drive/1IrDiywgmG5lln-Jb_9CM-3djAmm_2KwM?usp=sharing), there is a testing example for a 4-qubit dynamic model, and the `examples` folder contains testing examples for other pre-trained models.
 
-## Acknowledgement
-
-
 ## Citation
 
 If our code or models help your work, please cite our paper:
