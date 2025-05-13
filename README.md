@@ -46,5 +46,14 @@ In [Google Colab](https://colab.research.google.com/drive/1IrDiywgmG5lln-Jb_9CM-
 
 If our code or models help your work, please cite our paper:
 ```BibTeX
-
+@article{huang2025direct,
+  title={Direct entanglement detection of quantum systems using machine learning},
+  author={Huang, Yulei and Che, Liangyu and Wei, Chao and Xu, Feng and Nie, Xinfang and Li, Jun and Lu, Dawei and Xin, Tao},
+  journal={npj Quantum Information},
+  volume={11},
+  number={1},
+  pages={29},
+  year={2025},
+  publisher={Nature Publishing Group UK London}
+}
 ```
